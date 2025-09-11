@@ -1,25 +1,32 @@
 {% extends 'inventario/base.html' %}
 
 {% block title %}
-    Listado de productos
+    Listado productos
 {% endblock  %}
 
 {% block header%}
-    <header>
-        <h1>Listado de productos</h1>
+    <header class="w-full bg-red-700 p-6">
+        <h1 class="text-x1 font-bold text-white">Listado de productos</h1>
     </header>
 {% endblock %}
 
 {% block main  %}
     <main>
-        <section>
-            <h2></h2>
-            <p></p>
-            <ul>
-                <li>producto 1</li>
-                <li>producto 2</li>
-                <li>producto 3</li>
-                <li>producto 4</li>
+        <section class="p-8 gap-4 flex flex-col">
+            <a href="{%url 'producto_create'%}" class="border bg-violet-200 font-semibold border-violet-400 rounded p-2 shadow m-8">
+                Crear Producto
+            </a>
+            <ul class="border p-6">
+                {% for producto in object_list%}
+                    <li class="underline flex flex-col gap-1 border p-2 shadow rounded">
+                        <span>
+                            {{producto.nombre }} | {{producto.precio }} | {{producto.stock }}
+                        </span>
+                        <span>
+                            {{producto.descripcion }}
+                        </span>
+                    </li>
+                {% endfor%}
             </ul>
         </section>
     </main>
@@ -27,6 +34,6 @@
 
 {% block footer  %}
     <footer>
-        <span></span>
+        <span>c</span>
     </footer>
 {% endblock  %}
